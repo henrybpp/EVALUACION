@@ -2,7 +2,7 @@
 # authors: henryfisi08@gmail.com
 # Run All sh
 
-rpath=$(pwd)/EVALUACION
+rpath=$(pwd)/..
 
 function compile_source() {
   if [[ -z "$rpath" ]] ; then echo "error on pull source..."; exit 1; fi
