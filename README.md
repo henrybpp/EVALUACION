@@ -43,3 +43,10 @@ This README would normally document whatever steps are necessary to get your app
 
 ![image](https://user-images.githubusercontent.com/51663180/158216124-ce58b0cd-519e-4d92-8206-5db36c440d13.png)
 
+### MONGO ATLAS ###
+
+![image](https://user-images.githubusercontent.com/51663180/158217372-949713fb-9058-4f91-997d-5080042bf650.png)
+
+![image](https://user-images.githubusercontent.com/51663180/158217753-293a30fe-05da-4d87-9537-2fd594484ded.png)
+
+
