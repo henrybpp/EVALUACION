@@ -12,18 +12,15 @@ import com.hry.core.common.wrapper.Response;
 public abstract class BaseService {
 	
 	@Autowired
-	public HttpServletRequest request;
+	private HttpServletRequest request;
 	
 	@Autowired
-	HttpServletResponse response;
+	private HttpServletResponse response;
+	
+	private static final Integer STATUS_OK = 200;
 	
 	@PostConstruct
 	void init(){}	
-
-	public Integer getStatusOk() {
-		Integer res = 200;
-		return res;
-	}
 	
 	public String getPathApi() {
 		return request.getRequestURI();
@@ -34,11 +31,11 @@ public abstract class BaseService {
 	}
 	
 	public <T> Response<T> getInitialResponse() {
-		Response<T> response=new Response<>();
-		response.setPath(getPathApi());
-		response.setStatus(getStatusOk());
-		response.setStatusText(Constantes.STATUS_TEXT_OK);
-		response.setMessage(Constantes.OPERACION_OK);
-		return response;
+		Response<T> responsex= new Response<>();
+		responsex.setPath(getPathApi());
+		responsex.setStatus(STATUS_OK);
+		responsex.setStatusText(Constantes.STATUS_TEXT_OK);
+		responsex.setMessage(Constantes.OPERACION_OK);
+		return responsex;
 	}
 }

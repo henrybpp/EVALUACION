@@ -23,7 +23,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableScheduling
 public abstract class BaseConfig implements WebMvcConfigurer {
 	
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -56,14 +55,4 @@ public abstract class BaseConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
-	
-	/*
-	@Bean
-	public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
-		TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);		
-		transactionTemplate.setTimeout(7000);
-		return transactionTemplate;
-		//return new TransactionTemplate(transactionManager);
-	}
-	*/
 }

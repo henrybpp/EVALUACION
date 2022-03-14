@@ -16,7 +16,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.hry.core.common.exception.ProductException;
 
 public final class Util {
 	private Util() {
@@ -51,13 +50,13 @@ public final class Util {
 		return ok;
 	}
 
-	public static String objectToJson(Object o) throws ProductException, JsonProcessingException {
+	public static String objectToJson(Object o) throws JsonProcessingException {
 		ObjectMapper mapperObj = new ObjectMapper();
 		mapperObj.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		return mapperObj.writeValueAsString(o);
 	}
 
-	public static <T> T objectToObject(Class<T> type, Object o) throws ProductException, IOException {
+	public static <T> T objectToObject(Class<T> type, Object o) throws IOException {
 		ObjectMapper mapperObj = new ObjectMapper();
 		mapperObj.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		mapperObj.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
@@ -71,9 +70,6 @@ public final class Util {
 	}
 
 	public static boolean isPalindrome(String phrase) {
-		//String sPalabra = "anita lava la tina";
-		//String sPalabra = "anilina";
-		//String sPalabra = "dabale arroz a la zorra el abad";
 		boolean isPalindrome = Boolean.FALSE;
 		int inc = 0;
 		int des = phrase.length() - 1;

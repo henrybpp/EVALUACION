@@ -24,54 +24,55 @@ public class ProductServiceImpl extends BaseService implements ProductService{
 		
 	@Autowired
 	ProductRepository productRepository;
+	
+	private static Double dscTextPalindrome = 0.50;
 
 	@Override
 	public Response<ProductModel> getById(String id) {
-		Response<ProductModel> response = getInitialResponse();
+		Response<ProductModel> simpleResponse = new Response<>();
 		try {
-			Optional<ProductModel> optProduct = productRepository.findById((new ObjectId(id)).toString());
-			
+			Optional<ProductModel> optProduct = productRepository.findById((new ObjectId(id)).toString());			
 			if(!optProduct.isPresent()){
-				response.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
-				response.setStatusCode(Constantes.PRD_NOT_FOUND);
-				return response;				
+				simpleResponse.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
+				simpleResponse.setStatusCode(Constantes.PRD_NOT_FOUND);
+				return simpleResponse;				
 			}
-			response.setObjetoRespuesta(optProduct.get());
+			simpleResponse.setObjetoRespuesta(optProduct.get());
 		}catch(Exception e) {
 			logger.info("error find product...",e);
-			response.setStatusText(Constantes.STATUS_TEXT_ERROR);
-			response.setStatusCode(Constantes.ERR_GENERICO);
-			response.setMessage(e.getMessage());
+			simpleResponse.setStatusText(Constantes.STATUS_TEXT_ERROR);
+			simpleResponse.setStatusCode(Constantes.ERR_GENERICO);
+			simpleResponse.setMessage(e.getMessage());
 		}
-		return response;
+		return simpleResponse;
 	}
 
 	@Override
 	public Response<List<ProductModel>> getAll() {
-		Response<List<ProductModel>> response = getInitialResponse();
+		Response<List<ProductModel>> lstResponse = getInitialResponse();
 		List<ProductModel> lstProductsModel = new ArrayList<>();
 		try {
 			lstProductsModel = productRepository.findAll();
 			
 			if(lstProductsModel.isEmpty()){
-				response.setStatusCode(Constantes.PRD_NOT_FOUND);
-				response.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
-				return response;
+				lstResponse.setStatusCode(Constantes.PRD_NOT_FOUND);
+				lstResponse.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
+				return lstResponse;
 			}
 
-			response.setObjetoRespuesta(lstProductsModel);
+			lstResponse.setObjetoRespuesta(lstProductsModel);
 		}catch(Exception e) {
 			logger.info("error find product...",e);
-			response.setStatusText(Constantes.STATUS_TEXT_ERROR);
-			response.setStatusCode(Constantes.ERR_GENERICO);
-			response.setMessage(e.getMessage());
+			lstResponse.setStatusText(Constantes.STATUS_TEXT_ERROR);
+			lstResponse.setStatusCode(Constantes.ERR_GENERICO);
+			lstResponse.setMessage(e.getMessage());
 		}
-		return response;
+		return lstResponse;
 	}
 
 	@Override
 	public Response<List<ProductModel>> getByPalindromeCondition(FilterDTO filterDTO) {
-		Response<List<ProductModel>> response = getInitialResponse();
+		Response<List<ProductModel>> lstResponse = getInitialResponse();
 		List<ProductModel> lstProductsModel = new ArrayList<>();
 		try {
 			
@@ -79,10 +80,10 @@ public class ProductServiceImpl extends BaseService implements ProductService{
 			boolean descriptionIsPalindrome = Util.isPalindrome(filterDTO.getDescription()) ? Boolean.TRUE : Boolean.FALSE;
 			
 			if(!(brandIsPalindrome || descriptionIsPalindrome)) {
-				response.setStatusCode(Constantes.PRD_PAL_NOT_FOUND);
-				response.setStatusText(Constantes.PAR_NOT_PALINDROME);
-				response.setObjetoRespuesta(lstProductsModel);
-				return response;
+				lstResponse.setStatusCode(Constantes.PRD_PAL_NOT_FOUND);
+				lstResponse.setStatusText(Constantes.PAR_NOT_PALINDROME);
+				lstResponse.setObjetoRespuesta(lstProductsModel);
+				return lstResponse;
 			}
 			
 			String brand = brandIsPalindrome ? ".*" + filterDTO.getBrand() + ".*" : "~";
@@ -92,17 +93,21 @@ public class ProductServiceImpl extends BaseService implements ProductService{
 				.findByPalindromeCondition(brand, description);
 			
 			if(lstProductsModel.isEmpty()){
-				response.setStatusCode(Constantes.PRD_NOT_FOUND);
-				response.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
-				return response;
+				lstResponse.setStatusCode(Constantes.PRD_NOT_FOUND);
+				lstResponse.setStatusText(Constantes.STATUS_TEXT_DESCRIPTION);
+				return lstResponse;
 			}
-			response.setObjetoRespuesta(lstProductsModel);
+			
+			lstProductsModel.forEach(x->  
+				x.setPrice(x.getPrice()*dscTextPalindrome)
+			);
+			lstResponse.setObjetoRespuesta(lstProductsModel);
 		}catch(Exception e) {
 			logger.info("error find product by palindrome condition...",e);
-			response.setStatusText(Constantes.STATUS_TEXT_ERROR);
-			response.setStatusCode(Constantes.ERR_GENERICO);
-			response.setMessage(e.getMessage());
+			lstResponse.setStatusText(Constantes.STATUS_TEXT_ERROR);
+			lstResponse.setStatusCode(Constantes.ERR_GENERICO);
+			lstResponse.setMessage(e.getMessage());
 		}
-		return response;
+		return lstResponse;
 	}
 }

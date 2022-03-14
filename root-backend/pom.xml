@@ -24,6 +24,8 @@
         <sonar.coverage.exclusions>
             **/lib/*
         </sonar.coverage.exclusions>
+        <sonar.organization>henrybpp</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <spring.cloud.version>Finchley.RC1</spring.cloud.version>
     </properties>
     
@@ -122,7 +124,7 @@
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.4.0.905</version>
 			</plugin>
 		</plugins>
     </build>

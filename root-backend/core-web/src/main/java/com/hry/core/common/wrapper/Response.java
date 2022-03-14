@@ -7,12 +7,14 @@ import com.hry.core.common.util.Constantes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Response<T> {
 	Integer status;
 	String statusText;
@@ -25,7 +27,6 @@ public class Response<T> {
 		this.statusText=Constantes.STATUS_TEXT_OK;
 		this.status=200;
 	}
-	
-	public Response() {}
+
 	private T objetoRespuesta;	
 }
