@@ -37,6 +37,9 @@ This README would normally document whatever steps are necessary to get your app
 
 ![image](https://user-images.githubusercontent.com/51663180/158214701-899f9f88-58cf-49ed-bcb7-8eac591bf9c7.png)
 
+### INSOMNIA ###
+![test-docker](https://user-images.githubusercontent.com/51663180/158218767-01a74f77-c29e-4cab-84ee-53cd67056cc0.png)
+
 
 ### SWAGGER-UI ###
 * http://192.168.0.20:8082/swagger-ui.html
