@@ -52,4 +52,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ![image](https://user-images.githubusercontent.com/51663180/158217753-293a30fe-05da-4d87-9537-2fd594484ded.png)
 
+### DOCKERHUB REGISTRY ###
+![image](https://user-images.githubusercontent.com/51663180/158223491-826af2b3-bd56-4b71-a7e3-b5108cfd7e69.png)
+
+
 
