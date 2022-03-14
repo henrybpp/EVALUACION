@@ -55,5 +55,9 @@ This README would normally document whatever steps are necessary to get your app
 ### DOCKERHUB REGISTRY ###
 ![image](https://user-images.githubusercontent.com/51663180/158223491-826af2b3-bd56-4b71-a7e3-b5108cfd7e69.png)
 
+### SONARQUBE TEST ###
+![image](https://user-images.githubusercontent.com/51663180/158231011-953f6c53-04a7-48d7-9a00-8e60ba43fbbf.png)
+
+
 
 
