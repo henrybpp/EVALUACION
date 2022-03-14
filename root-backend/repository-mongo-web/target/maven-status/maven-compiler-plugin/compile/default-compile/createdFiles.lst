@@ -1,0 +1,6 @@
+com\hry\persistence\mongo\repository\ProductRepository.class
+com\hry\persistence\mongo\document\DatabaseSequence.class
+com\hry\persistence\mongo\document\ProductModel$ProductModelBuilder.class
+com\hry\persistence\mongo\document\ProductModel.class
+com\hry\App.class
+com\hry\persistence\mongo\document\ComentarioModel.class
