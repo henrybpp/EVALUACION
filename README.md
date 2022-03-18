@@ -58,6 +58,10 @@ This README would normally document whatever steps are necessary to get your app
 ### SONARQUBE TEST ###
 ![image](https://user-images.githubusercontent.com/51663180/158231011-953f6c53-04a7-48d7-9a00-8e60ba43fbbf.png)
 
+### JACOCO COVERAGE ###
+![image](https://user-images.githubusercontent.com/51663180/159083529-331108b6-c937-403e-b2fa-c9268ba716b0.png)
+
+
 
 
 
